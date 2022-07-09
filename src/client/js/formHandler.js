@@ -1,7 +1,9 @@
 function handleSubmit(event) {
     event.preventDefault()
     let formText = document.getElementById('name').value
-    Client.checkForName(formText);
+    if (!Client.checkForName(formText)) {
+        return;
+    }
     fetch('http://localhost:8082/APIkey')
     .then(res => {
         return res.json()
